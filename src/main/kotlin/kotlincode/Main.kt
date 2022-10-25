@@ -1,3 +1,5 @@
+package kotlincode
+
 import java.io.File
 
 class AuthLog(_data: String, _numberOfData: Int) {
@@ -57,7 +59,7 @@ fun main(args: Array<String>) {
     println(b)
 
 
-    val f= OnCLickListenerCustom{event->
+    val f = OnCLickListenerCustom { event ->
         println(event.name)
     }
 
@@ -76,8 +78,9 @@ fun main(args: Array<String>) {
 }
 
 class OnCLickListenerCustom(val clickHolder: (event: Event) -> Unit) {
-    fun onClickFired(event: Event){
+    fun onClickFired(event: Event) {
         clickHolder(event)
     }
 }
+
 data class Event(val name: String, val isEnable: Boolean)
