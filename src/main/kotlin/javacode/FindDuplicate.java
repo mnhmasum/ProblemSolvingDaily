@@ -27,10 +27,6 @@ public class FindDuplicate {
     }
     
     public static void main(String[] args) {
-        System.out.println("Hello World");
-        int x = 10;
-        int result = x + 20;
-        Integer y = new Integer(20);
         int[] arrayInt = {1,1,2,1,3};
         int duplicate = findDuplicate(arrayInt);
         System.out.println(duplicate);

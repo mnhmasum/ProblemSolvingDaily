@@ -36,12 +36,17 @@ fun main(args: Array<String>) {
 
     val events = listOf<Event>(Event("One", true), Event("Two", true), Event("Three", false))
 
-    val r = events.filter { it.isEnable }.flatMap {
+    val r = events.filter { it.isEnable in listOf<Boolean>(true, false) }.flatMap {
         val result: ArrayList<String> = ArrayList<String>()
-        result.add("${it.name}")
+        result.add("=>${it.name}")
         result
     }
 
+//    val arrayList:ArrayList<Event> = ArrayList()
+//    arrayList.flatMap {
+//        val arrayList:ArrayList<Event> = ArrayList()
+//        arrayList
+//    }
 
 
     print(r)
