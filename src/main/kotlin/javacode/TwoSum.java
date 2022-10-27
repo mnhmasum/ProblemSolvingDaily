@@ -9,10 +9,7 @@ public class TwoSum {
         for (int i = 0; i < nums.length; i++) {
             int toBeFound = target - nums[i];
             if(resultMap.containsKey(toBeFound)){
-                int[] arr = new int[2];
-                arr[0] = resultMap.get(toBeFound);
-                arr[1] = i;
-                return arr;
+                return new int[]{resultMap.get(toBeFound), i};
             } else {
                 resultMap.put(nums[i], i);
             }
@@ -20,7 +17,7 @@ public class TwoSum {
         return nums;
     }
     public static void main(String[] args) {
-        int[] arrayInt = {1,7,2,4,9};
+        int[] arrayInt = {1,7,6,4,2};
         int[] duplicate = twoSum(arrayInt, 9);
         System.out.println(Arrays.toString(duplicate));
     }
