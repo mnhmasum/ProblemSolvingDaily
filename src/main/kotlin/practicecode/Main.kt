@@ -40,30 +40,50 @@ fun main(args: Array<String>) {
 
     val events = listOf<Event>(Event("One", true), Event("Two", true), Event("Three", false))
 
-    events.map {
-        val event = it
-        event.name = event.name + "XXX"
-        event
-    }
-
-    println(events)
-
-    val r = events.filter { it.isEnable in listOf<Boolean>(true, false) }.flatMap {
-        val result: ArrayList<String> = ArrayList<String>()
-        result.add("=>${it.name}")
-        result
-    }
-
-//    val arrayList:ArrayList<Event> = ArrayList()
-//    arrayList.flatMap {
-//        val arrayList:ArrayList<Event> = ArrayList()
-//        arrayList
+//    events.map {
+//        val event = it
+//        event.name = event.name + "XXX"
+//        event
+//    }
+//
+//    println(events)
+//
+//    val r = events.filter { it.isEnable in listOf<Boolean>(true, false) }.flatMap {
+//        val result: ArrayList<String> = ArrayList<String>()
+//        result.add("=>${it.name}")
+//        result
 //    }
 
+    val arrayList:ArrayList<Event> = ArrayList()
+    arrayList.add(Event("One", true))
+    arrayList.add(Event("Two", true))
 
-    print(r)
 
-    AuthLog("Masum", 89.0)
+    val d = arrayList.map { it.copy() }
+
+
+    d.forEach { it.hashCode() }
+
+
+    arrayList.forEach {
+        println(it.hashCode())
+    }
+
+    d.forEach {
+        println(it.hashCode())
+    }
+
+
+    val a = arrayList.flatMap {
+        val arrayList:ArrayList<String> = ArrayList()
+        arrayList.add(it.name)
+        arrayList
+    }
+
+
+    print("======> $a")
+
+/*    AuthLog("Masum", 89.0)
 
     val files = File("Test").listFiles()
 
@@ -73,10 +93,10 @@ fun main(args: Array<String>) {
     var b = 2
     a = b.also { b = a }
     print(a)
-    println(b)
+    println(b)*/
 
 
-    val f = OnCLickListenerCustom { event ->
+   /* val f = OnCLickListenerCustom { event ->
         println(event.name)
     }
 
@@ -93,14 +113,26 @@ fun main(args: Array<String>) {
     println(d)
 
     println(authenticate())
+*/
 
 
-}
 
-class OnCLickListenerCustom(val clickHolder: (event: Event) -> Unit) {
-    fun onClickFired(event: Event) {
-        clickHolder(event)
+    val g = Pair(10,90)
+    println(g.first)
+    while (true) {
+        Thread.yield()
     }
+
+    val p = object: OnTest<Event>{
+        override fun <T> onTestGen(t: T) {
+        }
+
+    }
+
+    val q =
+
+    p.onTestGen(Event("fsdf", false))
+
 }
 
 interface OnTest<T> {
