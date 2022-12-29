@@ -5,10 +5,9 @@ import java.util.Arrays;
 public class Array1Dto2D {
     public static int[][] construct2DArray(int[] original, int m, int n) {
         int[][] r = new int[m][n];
-        int row = original.length / m;
-        if(row > n) {
-            return new int[0][0];
-        }
+        if (original.length != m * n)
+            return new int[][] {};
+
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 r[i][j] = original[(i * m) + j];
