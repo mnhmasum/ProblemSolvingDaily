@@ -19,133 +19,73 @@ class AuthLog(_data: String, _numberOfData: Int) {
 
 }
 
+fun List<Int>.allNonZero() = all { it != 0 }
+fun List<Int>.allNonZero1() = none { it == 0 }
+fun List<Int>.allNonZero2() = any { TODO() }
+
+fun List<Int>.containsZero(): Boolean = any { it == 0 }
+fun List<Int>.containsZero1() = all { TODO() }
+fun List<Int>.containsZero2() = none { TODO() }
+
+fun isEven(i: Int): Boolean = i % 2 == 0
+
 fun main(args: Array<String>) {
     println("Hello World!")
+    val events = listOf(Event("One", true), Event("One", true), Event("Three", true))
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    val x = events.groupBy { it.name }
 
-    val list = listOf<String>("Uddin,Nasir", "Yousaf, Muhammad")
-    val x = list.map {
-        it + "XX"
-    }
+    //println(x.filter { it.value.size > 1 }.firstNotNullOf { it.value }.toList())
 
-    x.filter { it.lowercase().contains("U") }.forEach {
-        println("Filtered with contains $it")
-    }
+    val t = TaxiPark(
+        setOf(Driver("D1"), Driver("D2")), setOf(Passenger("P1"), Passenger("P2"), Passenger("P3"), Passenger("P4")),
+        listOf(
+            Trip(Driver("D1"), setOf(Passenger("P1"), Passenger("P2")), 1, 2.5, 3.0),
+            Trip(Driver("D1"), setOf(Passenger("P2"), Passenger("P3")), 1, 2.5, 3.0)
+        )
+    )
 
-    println(list)
-    println(x)
+    val r = t.trips.map { it.passengers }.flatten().groupBy { it.name }
+    val p = t.allPassengers.asSequence().filter { r.isNotEmpty() }.map { p -> p.name to (r[p.name]?.size ?: 0)
+    }.filter { it.second >= 0 }.map { Passenger(it.first) }.toSet()
 
-    val events = listOf<Event>(Event("One", true), Event("Two", true), Event("Three", false))
+    //println(r)
+    //println(p)
 
-//    events.map {
-//        val event = it
-//        event.name = event.name + "XXX"
-//        event
-//    }
-//
-//    println(events)
-//
-//    val r = events.filter { it.isEnable in listOf<Boolean>(true, false) }.flatMap {
-//        val result: ArrayList<String> = ArrayList<String>()
-//        result.add("=>${it.name}")
-//        result
-//    }
-
-    val arrayList:ArrayList<Event> = ArrayList()
-    arrayList.add(Event("One", true))
-    arrayList.add(Event("Two", true))
+    val byDriver = t.trips.filter { it.driver.name == "D1" }
+        .groupBy { it.driver.name }
+        .filter { it.key == "D1" }
+        .toList()
+        .map { it.second }
+        .flatten()
+        .flatMap { it.passengers }
+        .groupBy { it.name}
+        .filter { it.value.size > 1 }
+        .flatMap { it.value }.
+        distinctBy { it.name }
 
 
-    val d = arrayList.map { it.copy() }
-
-
-    d.forEach { it.hashCode() }
-
-
-    arrayList.forEach {
-        println(it.hashCode())
-    }
-
-    d.forEach {
-        println(it.hashCode())
-    }
-
-
-    val a = arrayList.flatMap {
-        val arrayList:ArrayList<String> = ArrayList()
-        arrayList.add(it.name)
-        arrayList
-    }
-
-
-    print("======> $a")
-
-/*    AuthLog("Masum", 89.0)
-
-    val files = File("Test").listFiles()
-
-    println(files?.size)
-
-    var a = 1
-    var b = 2
-    a = b.also { b = a }
-    print(a)
-    println(b)*/
-
-
-   /* val f = OnCLickListenerCustom { event ->
-        println(event.name)
-    }
-
-    f.onClickFired(events[0])
-
-    var d: Int  // 1
-
-    if (true) {
-        d = 1   // 2
-    } else {
-        d = 2   // 2
-    }
-
-    println(d)
-
-    println(authenticate())
-*/
+        //?.groupBy { it.passengers }
+       /* ?.filter { it.value.size>=5 }
+        ?.flatMap { it.value }?.associateBy { it. }?.map { it.value }
+        ?.toSet()*/
 
 
 
-    val g = Pair(10,90)
-    println(g.first)
-    while (true) {
-        Thread.yield()
-    }
-
-    val p = object: OnTest<Event>{
-        override fun <T> onTestGen(t: T) {
-        }
-
-    }
-
-    val q =
-
-    p.onTestGen(Event("fsdf", false))
-
+    println(byDriver)
 }
 
 interface OnTest<T> {
     fun <T> onTestGen(t: T)
 }
 
-fun provideToken(function : (String) -> Unit) {
+fun provideToken(function: (String) -> Unit) {
     //async call here to an API service
     function.invoke("mytoken")
 }
 
-fun authenticate() : String? {
-    var token : String? = null
+fun authenticate(): String? {
+    var token: String? = null
     provideToken { providedToken ->
         token = providedToken
     }

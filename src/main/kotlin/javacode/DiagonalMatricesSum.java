@@ -11,12 +11,16 @@ public class DiagonalMatricesSum {
         }
 
         if (x.length % 2 == 0) {
-            System.out.println(total);
+            //System.out.println(total);
         } else {
             int centerPosition = x.length / 2;
             total = total - x[centerPosition][centerPosition];
-            System.out.println(total);
+            //System.out.println(total);
         }
+
+        Parent p = new Child();
+        System.out.println(p.x);
+        p.showData();
 
     }
 }
