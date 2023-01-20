@@ -18,8 +18,19 @@ fun main() {
     //findFaithfulPassenger(taxiPark)
     //findFrequentPassenger(taxiPark)
 
-    val findSmartPassenger = taxiPark.trips.partition { it.discount == null }
-    println(findSmartPassenger)
+    val findSmartPassenger = taxiPark.allPassengers.filter { p->
+        val x = taxiPark.trips.filter { p.name in it.passengers.map {p-> p.name } }.partition { it.discount != null }
+        x.first.count() > x.second.count()
+    }
+
+    val findTheMostFrequentTripDurationPeriod = taxiPark.trips.groupBy {
+        (it.duration / 10) * 10..it.duration / 10 * 10 + 9
+    }.maxBy { it.value.size }.key
+
+    val findTheMostFrequentTripDurationPeriod2 = taxiPark.trips.groupBy {
+        (it.duration / 10) * 10..it.duration / 10 * 10 + 9
+    }
+        .maxBy { (_,group)-> group.size }.key
 
 }
 
