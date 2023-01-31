@@ -1,4 +1,4 @@
-package practicecode.functionalcodingpractice
+package practicecode.coursera.functionalcodingpractice
 
 import practicecode.Driver
 import practicecode.Passenger

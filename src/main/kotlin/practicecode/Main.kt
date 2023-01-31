@@ -39,7 +39,7 @@ infix fun Int.divBy(r2: Int) : Rational = Rational(toBigInteger(), r2.toBigInteg
 
 
 fun main(args: Array<String>) {
-    println("Hello World!")
+    /*println("Hello World!")
     val events = listOf(Event("One", true), Event("One", true), Event("Three", true))
     println(1.plus(4))
     process("-6".toBigInteger())
@@ -50,7 +50,11 @@ fun main(args: Array<String>) {
     val x = 1 divBy 2
     val y = 4 divBy 28
 
-    println(x == y)
+    println(x == y)*/
+    val a = 1
+    val b = 21
+
+    println("41".toBigInteger().remainder("3".toBigInteger()))
 }
 
 fun process(x: BigInteger) {
