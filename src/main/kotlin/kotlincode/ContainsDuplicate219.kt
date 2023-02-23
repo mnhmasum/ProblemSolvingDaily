@@ -13,8 +13,7 @@ fun main() {
     val map: HashMap<Int, Int> = HashMap()
     for (i in nums.indices) {
         if (map.contains(nums[i])) {
-            val x = abs(i - map[nums[i]]!!)
-            if (x <= k) {
+            if (abs(i - map[nums[i]]!!) <= k) {
                 result = true
             } else {
                 map[nums[i]] = i
@@ -22,7 +21,6 @@ fun main() {
         } else {
             map[nums[i]] = i
         }
-
     }
 
     println(map)
