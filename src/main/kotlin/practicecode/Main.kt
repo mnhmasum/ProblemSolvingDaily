@@ -1,6 +1,7 @@
 package practicecode
 
 import java.math.BigInteger
+import kotlin.experimental.and
 
 
 class Rational(numerator: BigInteger, denometor: BigInteger) {
@@ -32,29 +33,48 @@ class Rational(numerator: BigInteger, denometor: BigInteger) {
         return result
     }
 
-
 }
 
-infix fun Int.divBy(r2: Int) : Rational = Rational(toBigInteger(), r2.toBigInteger())
+infix fun Int.divBy(r2: Int): Rational = Rational(toBigInteger(), r2.toBigInteger())
 
 
 fun main(args: Array<String>) {
-    /*println("Hello World!")
-    val events = listOf(Event("One", true), Event("One", true), Event("Three", true))
-    println(1.plus(4))
-    process("-6".toBigInteger())
-    println(Rational("2".toBigInteger(),"4".toBigInteger()))
-    println(Rational("4".toBigInteger(),"28".toBigInteger()))
-    println("12".toBigInteger().rem("5".toBigInteger()))
+    for (i in 1..2) {
+        for (j in 10 downTo 1) {
+            println("$i, $j")
+        }
+    }
 
-    val x = 1 divBy 2
-    val y = 4 divBy 28
 
-    println(x == y)*/
-    val a = 1
-    val b = 21
+    val list = listOf(1, 2, 4, 5, 6, 7, 8)
+    val index = list.indexOfFirst { it == 4 }.takeIf { it > 0 }
+    index?.let {  }
+    println("Index $index")
+    println("Hex ${hexStringToDecimal("FF")}")
 
-    println("41".toBigInteger().remainder("3".toBigInteger()))
+    val x = generateSequence(0) { it + 1 }
+    val iterator = x.iterator()
+
+    for (i in 1..10) {
+        println(iterator.next())
+    }
+
+
+
+}
+
+private fun hexStringToDecimal(inputTime: String = "FF"): String {
+    return inputTime.toInt(16).toString()
+}
+
+interface Test {
+    fun onClick()
+}
+
+interface Test1 : Test {
+    override fun onClick() {
+        TODO("Not yet implemented")
+    }
 }
 
 fun process(x: BigInteger) {
