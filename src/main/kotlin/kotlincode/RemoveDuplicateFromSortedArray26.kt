@@ -1,8 +1,6 @@
 package kotlincode
 
-import java.util.*
 import kotlin.collections.HashMap
-import kotlin.math.abs
 
 class RemoveDuplicateFromSortedArray26 {
 }
@@ -23,15 +21,15 @@ fun main() {
     nums[9] = 4
 
 
-    var toBeChangedIndex = 1
+    var index = 1
     for (i in 1 until nums.size) {
         if(nums[i] > nums[i-1]){
-            nums[toBeChangedIndex] = nums[i]
-            toBeChangedIndex++
+            nums[index] = nums[i]
+            index++
         }
     }
 
     println(nums.contentToString())
-    println(toBeChangedIndex)
+    println(index)
 
 }
