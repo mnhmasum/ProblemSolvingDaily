@@ -13,14 +13,15 @@ class FindIfPathExistInGraph1971 {
 
     public static boolean validPath(int n, int[][] edges, int source, int destination) {
         int[] nums = new int[n];
+
         for (int i = 0; i < n; i++) {
             nums[i] = i;
         }
 
-        for (int i = 0; i < edges.length; i++) {
-            int[] r = edges[i];
+        for (int[] r : edges) {
             union(r[0], r[1], nums);
         }
+
         return isConnected(source, destination, nums);
 
     }
