@@ -46,5 +46,15 @@ public class ZPractice {
         }*/
 
         System.out.println(isValidURL("http://172.16.205.102:8088/login"));
+
+        Object x = "This";
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println(x);
+            x = 1.6;
+            System.out.println(x);
+        }
+
+
     }
 }
