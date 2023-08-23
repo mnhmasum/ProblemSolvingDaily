@@ -1,9 +1,8 @@
 package javacode.tree;
 
-import java.sql.SQLOutput;
 import java.util.Stack;
 
-public class CreateBinaryTree {
+public class PreOrderBinaryTree {
     public static void main(String[] args) {
         Node node1 = new Node();
         node1.data = 1;
