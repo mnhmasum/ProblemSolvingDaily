@@ -5,21 +5,21 @@ import java.util.Stack;
 public class PostOrderBinaryTree {
     public static void main(String[] args) {
         Node node1 = new Node();
-        node1.data = 1;
+        node1.val = 1;
 
         Node node1Left = new Node();
-        node1Left.data = 2;
+        node1Left.val = 2;
 
         Node node1Right = new Node();
-        node1Right.data = 3;
+        node1Right.val = 3;
 
         Node node2Right = new Node();
-        node2Right.data = 4;
+        node2Right.val = 4;
 
-        node1Right.rightNode = node2Right;
+        node1Right.right = node2Right;
 
-        node1.leftNode = node1Left;
-        node1.rightNode = node1Right;
+        node1.left = node1Left;
+        node1.right = node1Right;
 
         Stack<Node> stack = new Stack<>();
         Stack<Node> stack2 = new Stack<>();
@@ -36,18 +36,18 @@ public class PostOrderBinaryTree {
 
             stack2.push(q);
 
-            if (q.leftNode != null) {
-                stack.push(q.leftNode);
+            if (q.left != null) {
+                stack.push(q.left);
             }
 
-            if (q.rightNode != null) {
-                stack.push(q.rightNode);
+            if (q.right != null) {
+                stack.push(q.right);
             }
         }
 
         while (!stack2.isEmpty()) {
             Node q = stack2.pop();
-            System.out.println("Post Order: " + q.data);
+            System.out.println("Post Order: " + q.val);
         }
 
 

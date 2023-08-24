@@ -5,21 +5,21 @@ import java.util.Stack;
 public class PreOrderBinaryTree {
     public static void main(String[] args) {
         Node node1 = new Node();
-        node1.data = 1;
+        node1.val = 1;
 
         Node node1Left = new Node();
-        node1Left.data = 2;
+        node1Left.val = 2;
 
         Node node1Right = new Node();
-        node1Right.data = 3;
+        node1Right.val = 3;
 
         Node node2Right = new Node();
-        node2Right.data = 4;
+        node2Right.val = 4;
 
-        node1Right.rightNode = node2Right;
+        node1Right.right = node2Right;
 
-        node1.leftNode = node1Left;
-        node1.rightNode = node1Right;
+        node1.left = node1Left;
+        node1.right = node1Right;
 
         Stack<Node> stack = new Stack<>();
 
@@ -31,13 +31,13 @@ public class PreOrderBinaryTree {
         while (t != null || !stack.isEmpty()) {
             if (t != null) {
                 leftCount += 1;
-                System.out.println(t.data);
+                System.out.println(t.val);
                 stack.push(t);
-                t = t.leftNode;
+                t = t.left;
             } else {
                 rightCount += 1;
                 t = stack.pop();
-                t = t.rightNode;
+                t = t.right;
             }
         }
 
