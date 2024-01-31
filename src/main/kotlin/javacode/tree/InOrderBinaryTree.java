@@ -1,5 +1,8 @@
 package javacode.tree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class InOrderBinaryTree {
@@ -39,6 +42,27 @@ public class InOrderBinaryTree {
                 System.out.println(head.val);
                 head = head.right;
             }
+
+        }
+
+        Queue<Integer> op = new LinkedList<>();
+
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        int c = arrayList.get(arrayList.size());
+
+        for (int i = arrayList.size() - 2; i > -1; i--) {
+
+            int v = arrayList.get(arrayList.size());
+            if(v == 2) {
+                //or
+            }
+
+            if(v == 3) {
+                //and
+            }
+
+
 
         }
 

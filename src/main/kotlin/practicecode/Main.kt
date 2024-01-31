@@ -1,7 +1,7 @@
 package practicecode
 
 import java.math.BigInteger
-import kotlin.experimental.and
+import kotlin.random.Random
 
 
 class Rational(numerator: BigInteger, denometor: BigInteger) {
@@ -39,29 +39,66 @@ infix fun Int.divBy(r2: Int): Rational = Rational(toBigInteger(), r2.toBigIntege
 
 
 fun main(args: Array<String>) {
-    for (i in 1..2) {
-        for (j in 10 downTo 1) {
-            println("$i, $j")
-        }
+
+    val x = generateSequence(0) {
+        println("Yeild $it")
+        it + 1
+    }
+    println(x.take(5).toList())
+
+    val oddNumbers = sequence {
+        yield(2)
+        yieldAll(generateSequence(2) { it + 2 })
     }
 
+    //println(oddNumbers.take(5).toList())
 
-    val list = listOf(1, 2, 4, 5, 6, 7, 8)
-    val index = list.indexOfFirst { it == 4 }.takeIf { it > 0 }
-    index?.let {  }
-    println("Index $index")
-    println("Hex ${hexStringToDecimal("FF")}")
-
-    val x = generateSequence(0) { it + 1 }
-    val iterator = x.iterator()
-
-    for (i in 1..10) {
-        println(iterator.next())
+    fun m(i: Int): Int {
+        //print("m$i ")
+        return i
     }
 
+    fun f(i: Int): Boolean {
+        //print("f$i ")
+        return i % 2 == 0
+    }
 
+    val list = listOf(1, 2, 3, 4)
+    //list.map(::m).filter(::f)  //m1 m2 m3 m4 f1 f2 f3 f4
+    val a = oddNumbers.take(5).map(::m).filter(::f).toList() //?
+
+    //println(a)
+
+
+    val x1 = generateSequence {
+        Random.nextInt(4).takeIf { it > 0 }
+    }
+
+    //println(x1.toList())
+
+    val map = mutableMapOf<Int, MutableList<String>>()
+    for (i in x1.toList()) {
+        map[i] = mutableListOf()
+        var group = map.getValue(i)
+    }
+
+    fun check(x: Int, isItEven: Int.() -> Boolean): Boolean {
+        return x.isItEven()
+    }
+
+    fun check1(input: Int, isEven: (Int) -> Boolean): Boolean {
+        return isEven(input)
+    }
+
+    val result = check(21) { this % 2 == 0 }
+    val result1 = check1(21, { it % 2 == 0 })
+
+    println("The perfect result $result")
 
 }
+
+val isEven: Int.() -> Boolean = { this % 2 == 0 }
+val isEven1: (Int) -> Boolean = { it % 2 == 0 }
 
 private fun hexStringToDecimal(inputTime: String = "FF"): String {
     return inputTime.toInt(16).toString()
