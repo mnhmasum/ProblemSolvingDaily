@@ -1,5 +1,8 @@
 package practicecode.lamdawithreceiver
 
+import java.nio.charset.StandardCharsets
+import java.util.*
+
 
 fun main(args: Array<String>) {
 
@@ -31,6 +34,14 @@ fun main(args: Array<String>) {
     run { println("Direct run lambda using invoke") }
 
 
+}
+
+
+private fun String.decodePassword(): String {
+    val decodedText = Base64.getDecoder().decode(this)
+    val text = String(decodedText, StandardCharsets.UTF_8)
+    val password = text.split(":")
+    return if (password.isNotEmpty()) password[1] else ""
 }
 
 var lambdaVar: (() -> Unit)? = null

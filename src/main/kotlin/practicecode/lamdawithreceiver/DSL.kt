@@ -15,9 +15,9 @@ data class Address(
 )
 
 fun person(block: Person.() -> Unit): Person {
-    val p = Person()
-    p.block()
-    return p
+    val person = Person()
+    person.block()
+    return person
 }
 
 //same thing as the previous person function
@@ -30,7 +30,7 @@ fun Person.address(block: Address.() -> Unit) {
 }
 
 fun main(args: Array<String>) {
-  /*  val person = person {
+    val person = person {
         name = "John"
         age = 25
         address {
@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
             number = 5
             city = "Dhaka"
         }
-    }*/
+    }
 
     thread(isDaemon = false) {
         Thread.sleep(1000L)
