@@ -7,7 +7,7 @@ public class PalindromeNumber9 {
 
         int x = 1410110141;
         long div = 1;
-
+        int[] y;
 
         while (x > 10 * div) {
             div = 10 * div;
