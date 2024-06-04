@@ -14,16 +14,17 @@ fun main(args: Array<String>) {
         return isEven(input)
     }
 
-    val result = check(21) { this % 2 == 0 }
+    val result = check(20) { this % 2 == 0 }
     val result1 = check1(21, { it % 2 == 0 })
-
 
     println("The perfect result $result")
     println("The perfect result1 $result1")
+
     lambdaVar = { println("Check something") }
     val lambdaVar1:(Int, Int) -> Unit = { a: Int, b: Int -> println("===") }
-    lambdaVar?.invoke()
-    lambdaVar1.invoke(10, 30)
+
+    //lambdaVar
+    lambdaVar1(10, 30)
 
     val test = StringBuilder()
     test.append("A")

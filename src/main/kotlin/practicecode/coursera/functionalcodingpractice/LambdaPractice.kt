@@ -22,11 +22,6 @@ fun main() {
 
     eventFinder(isEvent)
 
-    val map = mapOf<String, Int>("A" to 1, "B" to 2, "C" to 3)
-    val mr = map.map { it.value }.all { it == 1 }
-    println(mr)
-
-
     val list1 = listOf(1, 2, 3, 4)
     //list1.asSequence().map(::m).filter(::f).toList()
     //m1 f1 m2 f2 m3 f3 m4 f4
@@ -41,27 +36,12 @@ fun main() {
 
     println(seq.toList())
 
-    println(isEven { this + 1 == 5 })
+    println("isEvent result " + isEven { this + 1 == 5 })
 
     println(buildSomething(Pair(5, 2), { first + second }))
 
     val number = 42
     println(number.takeIf { it > 100 } ?: 0)
-
-    val map1 =
-        mapOf("Switch1" to Pair("ENABLE", "OPEN"), "Switch2" to Pair("DISABLE", "CLOSE"), "C" to Pair("ENABLE", "OPEN"))
-
-    map1.map { it.value }.map { it.first }.filter { it == "ENABLE" }
-    map1.entries.filter { it.value.second == "ENABLE" }
-    map1.values.filter { it.second == "ENABLE" }
-
-    val smartDevices = mapOf(
-        "Thermostat" to Pair("ENABLE", "AUTO"),
-        "Smart Lock" to Pair("DISABLE", "LOCKED"),
-        "Camera" to Pair("ENABLE", "ACTIVE")
-    )
-
-    smartDevices.mapValues { it.value.second == "ENABLE" }
 
 }
 
@@ -74,10 +54,6 @@ inline fun <T, R> buildSomething(r: T, x: T.() -> R): R {
 }
 
 val isEven1: () -> Boolean = { true }
-
-inline fun newWith() {
-
-}
 
 fun m(i: Int): Int {
     print("m$i ")

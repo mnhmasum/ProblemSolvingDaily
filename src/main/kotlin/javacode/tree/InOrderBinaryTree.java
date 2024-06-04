@@ -45,26 +45,8 @@ public class InOrderBinaryTree {
 
         }
 
-        Queue<Integer> op = new LinkedList<>();
-
-        ArrayList<Integer> arrayList = new ArrayList<>();
-
-        int c = arrayList.get(arrayList.size());
-
-        for (int i = arrayList.size() - 2; i > -1; i--) {
-
-            int v = arrayList.get(arrayList.size());
-            if(v == 2) {
-                //or
-            }
-
-            if(v == 3) {
-                //and
-            }
 
 
-
-        }
 
     }
 }

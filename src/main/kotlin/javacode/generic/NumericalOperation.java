@@ -2,13 +2,12 @@ package javacode.generic;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-public class NumberType<T extends Number & Comparable<T>> {
+public class NumericalOperation<T extends Number & Comparable<T>> {
     public List<T> listOfNumber;
 
-    public NumberType(List<T> list) {
+    public NumericalOperation(List<T> list) {
         this.listOfNumber = new ArrayList<>(list);
     }
 

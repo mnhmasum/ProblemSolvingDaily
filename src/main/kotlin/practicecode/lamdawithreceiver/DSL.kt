@@ -14,11 +14,12 @@ data class Address(
     var city: String? = null
 )
 
-fun person(block: Person.() -> Unit): Person {
+fun <T> person(block: Person.() -> Unit): Person {
     val person = Person()
     person.block()
     return person
 }
+
 
 //same thing as the previous person function
 //fun person(block: Person.() -> Unit): Person = Person().apply(block)
@@ -30,7 +31,7 @@ fun Person.address(block: Address.() -> Unit) {
 }
 
 fun main(args: Array<String>) {
-    val person = person {
+    val person = person<Unit> {
         name = "John"
         age = 25
         address {
