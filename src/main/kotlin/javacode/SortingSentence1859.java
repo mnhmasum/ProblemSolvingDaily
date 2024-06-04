@@ -1,9 +1,5 @@
 package javacode;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
-
 public class SortingSentence1859 {
 
     public static String sortSentence(String s) {
