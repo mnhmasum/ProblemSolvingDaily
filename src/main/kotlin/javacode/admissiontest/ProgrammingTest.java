@@ -130,9 +130,7 @@ public class ProgrammingTest {
             }
         }
 
-        String result = list.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(" "));
+        String result = list.stream().map(String::valueOf).collect(Collectors.joining(" "));
 
         // Print the result
         System.out.println(result);
@@ -168,11 +166,33 @@ public class ProgrammingTest {
             multiplier = multiplier * 10;
         }
 
-        if(arr[0] < 0) {
+        if (arr[0] < 0) {
             encodeNum = encodeNum * -1;
         }
 
         return encodeNum;
+    }
+
+    //8
+    public static int countPrimeNumber(int start, int end) {
+        int countPrime = 0;
+        for (int i = start; i <= end; i++) {
+            if(isPrimeNumber(i)) {
+                countPrime +=1;
+            }
+        }
+        return countPrime;
+    }
+
+    public static boolean isPrimeNumber(int num) {
+        if (num <= 1) return false;
+        if (num == 2 || num == 3) return true;
+        if (num % 2 == 0) return false;
+        int limit = num / 2;
+        for (int i = 3; i <= limit; i = i + 2) {
+            if (num % i == 0) return false;
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -183,7 +203,8 @@ public class ProgrammingTest {
         //System.out.println(is123Array(a1));
         //System.out.println(is123Array(a1));
         //System.out.println(doIntegerBasedRounding(a2, 5));
-        System.out.println(isCubePowerful(-87));
-        System.out.println(decodeArray(a1));
+        //System.out.println(isCubePowerful(-87));
+        //System.out.println(decodeArray(a1));
+        System.out.println(countPrimeNumber(-10, 6));
     }
 }
