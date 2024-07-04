@@ -177,8 +177,8 @@ public class ProgrammingTest {
     public static int countPrimeNumber(int start, int end) {
         int countPrime = 0;
         for (int i = start; i <= end; i++) {
-            if(isPrimeNumber(i)) {
-                countPrime +=1;
+            if (isPrimeNumber(i)) {
+                countPrime += 1;
             }
         }
         return countPrime;
@@ -195,9 +195,125 @@ public class ProgrammingTest {
         return true;
     }
 
+    public static int nextPerfect(int num) {
+        if (num < 0) {
+            return 0;
+        }
+
+        if (num == 0) {
+            return 1;
+        }
+
+        int squareValue = 1;
+
+        while (num >= squareValue * squareValue) {
+            squareValue++;
+        }
+
+        return squareValue * squareValue;
+    }
+
+
+    public static int nUpCount(int[] a, int n) {
+        int count = 0;
+        int sum = 0;
+        for (int i = 0; i < a.length; i++) {
+            sum = sum + a[i];
+            if (sum > n) {
+                count = count + 1;
+            }
+        }
+        return count;
+    }
+
+    static int a6(int[] a) {
+        if (a.length < 3) return -1;
+        int i = 0;
+        int j = a.length - 1;
+        int idx = 1;
+        int leftSum = a[i];
+        int rightSum = a[j];
+
+        for (int k = 1; k < a.length - 2; k++) {
+            if (leftSum < rightSum) {
+                i++;
+                leftSum += a[i];
+                idx = i + 1;
+            } else {
+                j--;
+                rightSum += a[j];
+                idx = j - 1;
+            }
+        }
+
+        if (leftSum == rightSum)
+            return idx;
+        else
+            return -1;
+    }
+
+    static int q6(int[] a) {
+        int leftSum = a[0];
+        int rightSum = a[a.length - 1];
+        int i = 0;
+        int j = a.length - 1;
+
+        for (int k = 1; k < a.length - 2; k++) {
+            System.out.println("Result " + a[k]);
+            if (leftSum < rightSum) {
+                i++;
+                leftSum += a[i];
+
+            } else {
+                j--;
+                rightSum +=a[j];
+            }
+        }
+
+        if(leftSum == rightSum) {
+            return i + 1;
+        }
+
+        return -1;
+
+    }
+
+    //Sample 6
+    public static int f(int[] A) {
+        int n = A.length;
+
+        // Edge case: if array has fewer than two elements, no POE exists
+        if (n < 2) {
+            return -1;
+        }
+
+        // Calculate the total sum of elements in array A
+        int total_sum = 0;
+        for (int num : A) {
+            total_sum += num;
+        }
+
+        int left_sum = 0;
+
+        // Iterate through each index idx to find the POE
+        for (int idx = 0; idx < n; idx++) {
+            int right_sum = total_sum - (left_sum + A[idx]);
+
+            if (left_sum == right_sum) {
+                return idx;
+            }
+
+            left_sum += A[idx];
+        }
+
+        // If no POE is found, return -1
+        return -1;
+    }
+
     public static void main(String[] args) {
         int[] a1 = {-111, 115, 118, 117, 115};
-        int[] a2 = {1, 2, 3, 4, 5};
+        int[] a2 = {2, 3, 1, -6, 8, -3, -1, 2};
+        int[] a3 = {1, 5, 3, 1, 1, 1, 1, 1, 1};
         //System.out.println(equivalentArrays(a1, a2));
         //System.out.println(hasSingleMaximum(a2));
         //System.out.println(is123Array(a1));
@@ -205,6 +321,12 @@ public class ProgrammingTest {
         //System.out.println(doIntegerBasedRounding(a2, 5));
         //System.out.println(isCubePowerful(-87));
         //System.out.println(decodeArray(a1));
-        System.out.println(countPrimeNumber(-10, 6));
+        //System.out.println(countPrimeNumber(-10, 6));
+        //System.out.println(nextPerfect(6));
+        //System.out.println(nextPerfect(36));
+        //System.out.println(nextPerfect(0));
+        //System.out.println(nextPerfect(-5));
+        //System.out.println(nUpCount(a2, 5));
+        System.out.println(f(a3));
     }
 }
