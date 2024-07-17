@@ -246,10 +246,8 @@ public class ProgrammingTest {
             }
         }
 
-        if (leftSum == rightSum)
-            return idx;
-        else
-            return -1;
+        if (leftSum == rightSum) return idx;
+        else return -1;
     }
 
     static int q6(int[] a) {
@@ -266,11 +264,11 @@ public class ProgrammingTest {
 
             } else {
                 j--;
-                rightSum +=a[j];
+                rightSum += a[j];
             }
         }
 
-        if(leftSum == rightSum) {
+        if (leftSum == rightSum) {
             return i + 1;
         }
 
@@ -310,23 +308,344 @@ public class ProgrammingTest {
         return -1;
     }
 
+
+    static int nextPerfectSquare(int num) {
+        if (num == 0 || num < 0) return 0;
+        float p = (float) Math.sqrt(num);
+        int x = (int) p;
+
+        return (x + 1) * (x + 1);
+    }
+
+    static int madhav(int[] a) {
+        int lastSum = a[0];
+        int lastIndex = 1;
+        int limit = 2;
+
+        while (lastIndex < a.length) {
+            int newSum = 0;
+
+            for (int i = 0; i < limit; i++) {
+                if (lastIndex > a.length - 1) return 0;
+                newSum += a[lastIndex];
+                lastIndex++;
+            }
+
+            if (lastSum == newSum) {
+                lastSum = newSum;
+            } else {
+                return 0;
+            }
+
+            limit++;
+
+        }
+
+        return 1;
+
+    }
+
+    static int isGuthrieSequence(int[] a) {
+        int n = a[0];
+        int counter = 1;
+        int[] arr = new int[n];
+        arr[0] = n;
+
+        while (n != 1) {
+            if (n % 2 == 0) {
+                n = n / 2;
+            } else {
+                n = n * 3 + 1;
+            }
+            arr[counter++] = n;
+        }
+
+        if (counter != a.length) return 0;
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != arr[i]) {
+                return 0;
+            }
+        }
+
+        return 1;
+    }
+
+    static int repsEqual(int[] a, int n) {
+        int multiple = 1;
+        int sum = 0;
+        for (int i = a.length - 1; i >= 0; i--) {
+            sum += a[i] * multiple;
+            multiple = multiple * 10;
+        }
+
+        System.out.println(sum);
+
+        if (n == sum) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    static int center15(int[] a) {
+        int i = 0;
+        int j = 0;
+        int sum = 0;
+
+        if (a.length % 2 == 0) {
+            j = a.length / 2;
+            i = a.length / 2 - 1;
+            sum = a[i] + a[j];
+        } else {
+            j = a.length / 2;
+            i = a.length / 2;
+            sum = a[j];
+        }
+
+        while (i > 0 && j < a.length) {
+            if (sum == 15 && i == a.length - 1 - j) {
+                return 1;
+            } else {
+                i--;
+                j++;
+                sum = sum + a[i] + a[j];
+            }
+        }
+
+        if (sum == 15 && i == a.length - 1 - j) {
+            return 1;
+        }
+
+        return 0;
+
+    }
+
+    static int isDivisible(int[] a, int divisor) {
+        if (a.length == 0) return 1;
+
+        for (int i : a) {
+            if (i % divisor != 0) {
+                return 0;
+            }
+        }
+
+        return 1;
+    }
+
+    static int henry(int i, int j) {
+        if (i > j) {
+            int small = j;
+            j = i;
+            i = small;
+        }
+
+        int num = 1;
+        int counter = 0;
+
+        int first = 0;
+        int second = 0;
+
+        while (counter != j) {
+            int sum = 0;
+
+            for (int k = 1; k < num; k++) {
+                if (num % k == 0) {
+                    sum += k;
+                }
+            }
+
+            if (sum == num) {
+                counter++;
+            }
+
+            if (counter == i && first == 0) {
+                first = num;
+            }
+
+            if (counter == j && second == 0) {
+                second = num;
+            }
+
+            num++;
+
+        }
+
+        return first + second;
+    }
+
+    public static int isNunique(int[] a, int n) {
+        if (a == null || a.length < 2) return 0;
+        int count = 0;
+        for (int i = 0; i < a.length - 1; i++)
+            for (int j = i + 1; j < a.length; j++)
+                if (a[i] + a[j] == n) {
+                    count++;
+                    if (count == 2) return 0;
+                }
+        if (count == 0) return 0;
+        return 1;
+    }
+
+    static int isSequence(int[] a) {
+        if (a.length == 0) return 0;
+        int num = a[0];
+        int counter = 0;
+
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] > a[i + 1] || a[i] < 0) {
+                return 0;
+            }
+        }
+
+        int i = 0;
+
+        while (i < a.length) {
+            if (a[i] == num) {
+                i++;
+                counter++;
+
+                if (counter >= num) return 0;
+
+            } else {
+                num = a[i];
+                counter = 1;
+                i++;
+            }
+        }
+
+        return 1;
+    }
+
+    static int isMinMaxDisjoint(int[] a) {
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        int max_index = -1;
+        int min_index = -1;
+
+        for (int i = 0; i < a.length; i++) {
+            if (max < a[i]) {
+                max = a[i];
+                max_index = i;
+            }
+        }
+
+        for (int i = 0; i < a.length; i++) {
+            if (min > a[i]) {
+                min = a[i];
+                min_index = i;
+            }
+        }
+
+        int max_counter = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (max == a[i]) {
+                max_counter++;
+            }
+        }
+
+        int min_counter = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (min == a[i]) {
+                min_counter++;
+            }
+        }
+
+        if (max_index + 1 == min_index || max_index - 1 == min_index) {
+            return 0;
+        }
+
+        if (max != min && max_counter == 1 && min_counter == 1) {
+            return 1;
+        }
+
+        return 0;
+    }
+
+    static int smallest(int n) {
+        for (int i = 1; i < Integer.MAX_VALUE; i++) {
+            int counter = 0;
+            for (int j = 1; j <= n; j++) {
+                int num = i * j;
+
+                while (num != 0) {
+                    int digit = num % 10;
+                    num = num / 10;
+
+                    if (digit == 2) {
+                        counter++;
+                        break;
+                    }
+                }
+
+                if (counter == n) {
+                    return i;
+                }
+            }
+        }
+
+        return 0;
+
+    }
+
+    static int cluster(int[] a) {
+        int num = a[0];
+        int numberOfCluseter = 1;
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] != num) {
+                num = a[i];
+                numberOfCluseter++;
+            }
+        }
+
+        int[] clusterArray = new int[numberOfCluseter];
+        num = a[0];
+        int cnt = 0;
+        clusterArray[cnt++] = num;
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] != num) {
+                num = a[i];
+                clusterArray[cnt++] = num;
+            }
+        }
+
+        System.out.println(Arrays.toString(clusterArray));
+
+        return numberOfCluseter;
+    }
+
     public static void main(String[] args) {
         int[] a1 = {-111, 115, 118, 117, 115};
         int[] a2 = {2, 3, 1, -6, 8, -3, -1, 2};
         int[] a3 = {1, 5, 3, 1, 1, 1, 1, 1, 1};
+        int[] a4 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, -2, -1};
+        int[] a5 = {8, 4, 2, 1};
+        int[] a6 = {3, 2, 0, 5, 3};
+        int[] a7 = {1, 1, 15 - 1, -1};
+        int[] a8 = {1, 1, 8, 3, 1, 1};
+
         //System.out.println(equivalentArrays(a1, a2));
         //System.out.println(hasSingleMaximum(a2));
-        //System.out.println(is123Array(a1));
         //System.out.println(is123Array(a1));
         //System.out.println(doIntegerBasedRounding(a2, 5));
         //System.out.println(isCubePowerful(-87));
         //System.out.println(decodeArray(a1));
         //System.out.println(countPrimeNumber(-10, 6));
         //System.out.println(nextPerfect(6));
-        //System.out.println(nextPerfect(36));
-        //System.out.println(nextPerfect(0));
-        //System.out.println(nextPerfect(-5));
         //System.out.println(nUpCount(a2, 5));
-        System.out.println(f(a3));
+        //System.out.println(f(a3));
+        //System.out.println(f1(-5));
+        //System.out.println(madhav(a4));
+        //System.out.println(isGuthrieSequence(a5));
+        //System.out.println(repsEqual(new int[]{3, 2, 0, 5, 3}, 32053));
+        //System.out.println(center15(a8));
+        //System.out.println(isDivisible(new int[]{4}, 2));
+        //System.out.println(henry(2, 3));
+        //System.out.println(isSequence(new int[]{2}));
+        //System.out.println(isMinMaxDisjoint(new int[]{1, 2}));
+        //System.out.println(smallest(7));
+        //System.out.println(fx(4));
+        System.out.println(cluster(new int[]{8, 8, 6, 6, -2, -2, -2}));
     }
 }
