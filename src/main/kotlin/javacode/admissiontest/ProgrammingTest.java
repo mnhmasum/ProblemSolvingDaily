@@ -615,6 +615,79 @@ public class ProgrammingTest {
         return numberOfCluseter;
     }
 
+    static int smartArray(int num) {
+        int sum = 1;
+        int i = 0;
+        while (true) {
+            sum = sum + i;
+            System.out.println(sum);
+            if (sum == num) {
+                return 1;
+            }
+            if (sum > num) {
+                return 0;
+            }
+            i++;
+        }
+    }
+
+    static int isFactorEqual(int a, int b) {
+        int countA = 0;
+        int countB = 0;
+        for (int i = 1; i <= a; i++) {
+            if (a % i == 0) {
+                countA = countA + 1;
+            }
+        }
+
+        for (int i = 1; i <= b; i++) {
+            if (a % i == 0) {
+                countB = countB + 1;
+            }
+        }
+
+        if (countA == countB) {
+            return 1;
+        } else {
+            return 0;
+        }
+
+    }
+
+    static int isFabonacci(int num) {
+        int i = 1;
+        int j = 1;
+        while (true) {
+            int temp = j;
+            j = j + i;
+            i = temp;
+            System.out.print(" " + j);
+            if (j == num) return 1;
+            if (j > num) return 0;
+        }
+    }
+
+    static int isMeera(int[] a) {
+        boolean isFoundPrime = false;
+        boolean isFoundZero = false;
+
+        for (int i = 0; i < a.length; i++) {
+            if (isPrimeNumber(a[i])) {
+                isFoundPrime = true;
+            }
+
+            if (a[i] == 0) {
+                isFoundZero = true;
+            }
+        }
+
+        if (isFoundPrime && isFoundZero) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     public static void main(String[] args) {
         int[] a1 = {-111, 115, 118, 117, 115};
         int[] a2 = {2, 3, 1, -6, 8, -3, -1, 2};
@@ -646,6 +719,12 @@ public class ProgrammingTest {
         //System.out.println(isMinMaxDisjoint(new int[]{1, 2}));
         //System.out.println(smallest(7));
         //System.out.println(fx(4));
-        System.out.println(cluster(new int[]{8, 8, 6, 6, -2, -2, -2}));
+        //System.out.println(cluster(new int[]{8, 8, 6, 6, -2, -2, -2}));
+        //System.out.println(smartArray(22));
+        //System.out.println(isFactorEqual(10, 9));
+        //System.out.println(" = " + isFabonacci(6765));
+
+
+        System.out.println(isMeera(new int[]{7, 6, 10, 0}));
     }
 }
