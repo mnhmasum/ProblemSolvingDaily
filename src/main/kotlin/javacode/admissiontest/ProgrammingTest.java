@@ -667,6 +667,21 @@ public class ProgrammingTest {
         }
     }
 
+    static int isCenter(int[] a) {
+        int i = 0;
+        int j = a.length - 1;
+        int mid = a[a.length / 2];
+        while (i != j) {
+            if (mid > a[i] || mid > a[j]) {
+                return 0;
+            }
+            i = i + 1;
+            j = j - 1;
+        }
+
+        return 1;
+    }
+
     static int isMeera(int[] a) {
         boolean isFoundPrime = false;
         boolean isFoundZero = false;
@@ -686,6 +701,40 @@ public class ProgrammingTest {
         } else {
             return 0;
         }
+    }
+
+    static int isMadhav(int[] a) {
+        boolean hasValidLength = false;
+
+        for (int n = 1; n < a.length; n++) {
+            int l = n * (n + 1) / 2;
+            if (l == a.length) {
+                hasValidLength = true;
+                break;
+            }
+        }
+
+        if (!hasValidLength) {
+            return 0;
+        }
+
+        int num = a[0];
+
+        int nextSubArraySize = 2;
+        for (int i = 1; i < a.length; ) {
+
+            int sumSubArray = 0;
+            for (int j = i; j < i + nextSubArraySize; j++) {
+                sumSubArray = sumSubArray + a[j];
+            }
+
+            if (num != sumSubArray) return 0;
+
+            i = i + nextSubArraySize;
+            nextSubArraySize = nextSubArraySize + 1;
+        }
+
+        return 1;
     }
 
     public static void main(String[] args) {
@@ -724,7 +773,15 @@ public class ProgrammingTest {
         //System.out.println(isFactorEqual(10, 9));
         //System.out.println(" = " + isFabonacci(6765));
 
+        //System.out.println(isMeera(new int[]{7, 6, 10, 0}));
+        //System.out.println(isCenter(new int[]{2,4,3,6,4,7,5,6,3}));
+        System.out.println(" " + isMadhav(new int[]{2, 1, 1}));
+        System.out.println(" " + isMadhav(new int[]{2, 1, 1, 4, -1, -1}));
+        System.out.println(" " + isMadhav(new int[]{6, 2, 4, 2, 2, 2, 1, 5, 0, 0}));
+        System.out.println(" " + isMadhav(new int[]{18, 9, 10, 6, 6, 6}));
+        System.out.println(" " + isMadhav(new int[]{-6, -3, -3, 8, -5, -4}));
+        System.out.println(" " + isMadhav(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, -2, -1}));
+        System.out.println(" " + isMadhav(new int[]{3, 1, 2, 3, 0}));
 
-        System.out.println(isMeera(new int[]{7, 6, 10, 0}));
     }
 }
