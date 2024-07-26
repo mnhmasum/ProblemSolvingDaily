@@ -737,6 +737,28 @@ public class ProgrammingTest {
         return 1;
     }
 
+    static int isBeanArray(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            int smaller = a[i] - 1;
+            int greater = a[i] + 1;
+
+            boolean isFound = false;
+
+            for (int j = 0; j < a.length; j++) {
+                if (smaller == a[j] || greater == a[j]) {
+                    isFound = true;
+                    break;
+                }
+            }
+
+            if (!isFound) {
+                return 0;
+            }
+        }
+
+        return 1;
+    }
+
     public static void main(String[] args) {
         int[] a1 = {-111, 115, 118, 117, 115};
         int[] a2 = {2, 3, 1, -6, 8, -3, -1, 2};
@@ -775,13 +797,17 @@ public class ProgrammingTest {
 
         //System.out.println(isMeera(new int[]{7, 6, 10, 0}));
         //System.out.println(isCenter(new int[]{2,4,3,6,4,7,5,6,3}));
-        System.out.println(" " + isMadhav(new int[]{2, 1, 1}));
-        System.out.println(" " + isMadhav(new int[]{2, 1, 1, 4, -1, -1}));
-        System.out.println(" " + isMadhav(new int[]{6, 2, 4, 2, 2, 2, 1, 5, 0, 0}));
-        System.out.println(" " + isMadhav(new int[]{18, 9, 10, 6, 6, 6}));
-        System.out.println(" " + isMadhav(new int[]{-6, -3, -3, 8, -5, -4}));
-        System.out.println(" " + isMadhav(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, -2, -1}));
-        System.out.println(" " + isMadhav(new int[]{3, 1, 2, 3, 0}));
+//        System.out.println(" " + isMadhav(new int[]{2, 1, 1}));
+//        System.out.println(" " + isMadhav(new int[]{2, 1, 1, 4, -1, -1}));
+//        System.out.println(" " + isMadhav(new int[]{6, 2, 4, 2, 2, 2, 1, 5, 0, 0}));
+//        System.out.println(" " + isMadhav(new int[]{18, 9, 10, 6, 6, 6}));
+//        System.out.println(" " + isMadhav(new int[]{-6, -3, -3, 8, -5, -4}));
+//        System.out.println(" " + isMadhav(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, -2, -1}));
+//        System.out.println(" " + isMadhav(new int[]{3, 1, 2, 3, 0}));
+
+        System.out.println(isBeanArray(new int[]{2,10, 9, 3}));
+        System.out.println(isBeanArray(new int[]{3,4,5,7}));
+        System.out.println(isBeanArray(new int[]{2,2,3,3,3}));
 
     }
 }
